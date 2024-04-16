@@ -43,6 +43,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     const token = localStorage.getItem("token");
+    const name = localStorage.getItem("name");
     const deleteArticle = async () => {
       try {
         const response = await fetch(

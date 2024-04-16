@@ -5,8 +5,6 @@ const id = urlParams.get("id");
 const articlePage = document.querySelector(".article-page");
 const token = localStorage.getItem("token");
 
-
-
 const getArticleById = async () => {
   try {
     const name = localStorage.getItem("name");
@@ -32,9 +30,9 @@ const getArticleById = async () => {
             </div>
             ${
               token
-                ? `  <button class="btn btn-sm btn-outline-secondary">
-            <i class="ion-edit"></i> Edit Article
-          </button>
+                ? ` <a href="/post/edit?id=${result.data.id}"><button class="btn btn-sm btn-outline-secondary" >
+                <i class="ion-edit"></i> Edit Article
+              </button></a> 
           <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle()">
           <i class="ion-trash-a"></i> Delete Article
         </button>`
@@ -67,4 +65,3 @@ const getArticleById = async () => {
 if (id) {
   getArticleById();
 }
-
