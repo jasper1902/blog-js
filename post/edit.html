@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="//demo.productionready.io/main.css" />
+    <title>Vite + TS</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Blog</a>
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <!-- Add "active" class when you're on that page" -->
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/login"> <i class="ion-compose"></i>&nbsp;login </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/register"> <i class="ion-gear-a"></i>&nbsp;register </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
+                </li>
+                <li class="nav-item" onclick="logout()">
+                    <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="editor-page">
+        <div class="container page">
+            <div class="row">
+                <div class="col-md-10 offset-md-1 col-xs-12">
+                    <!-- <ul class="error-messages">
+                        <li>That title is required</li>
+                    </ul> -->
+
+                    <form>
+                        <fieldset>
+                            <fieldset class="form-group">
+                                <input type="text" class="form-control form-control-lg" placeholder="Article Title" name="title" id="title"/>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                                <textarea class="form-control" rows="8"
+                                    placeholder="Write your article (in markdown)" id="body" name="body"></textarea>
+                            </fieldset>
+
+                            <button class="btn btn-lg pull-xs-right btn-primary" type="submit">
+                                Publish Article
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/createPost.ts"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "/account/login";
+        }
+    </script>
+</body>
+
+</html>

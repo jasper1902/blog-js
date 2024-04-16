@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="//demo.productionready.io/main.css" />
+    <title>Vite + TS</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Blog</a>
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <!-- Add "active" class when you're on that page" -->
+                    <a class="nav-link active" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/login"> <i class="ion-compose"></i>&nbsp;login </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/register"> <i class="ion-gear-a"></i>&nbsp;register </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
+                </li>
+                <li class="nav-item" onclick="logout()">
+                    <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="auth-page">
+        <div class="container page">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 col-xs-12">
+                    <h1 class="text-xs-center">Sign in</h1>
+                    <p class="text-xs-center">
+                        <a href="/account/register">Need an account?</a>
+                    </p>
+
+                    <!-- <ul class="error-messages">
+                <li>That email is already taken</li>
+              </ul> -->
+
+                    <form>
+                        <fieldset class="form-group">
+                            <input class="form-control form-control-lg" type="text" placeholder="Email" id="email"
+                                name="email" />
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input class="form-control form-control-lg" type="password" placeholder="Password"
+                                id="password" name="password" />
+                        </fieldset>
+                        <button class="btn btn-lg btn-primary pull-xs-right">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/login.ts"></script>
+    <script>
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "/account/login";
+        }
+    </script>
+</body>
+
+</html>

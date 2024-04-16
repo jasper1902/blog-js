@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="//demo.productionready.io/main.css" />
+  <title>Vite + TS</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">Blog</a>
+      <ul class="nav navbar-nav pull-xs-right">
+        <li class="nav-item">
+          <!-- Add "active" class when you're on that page" -->
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/account/login"> <i class="ion-compose"></i>&nbsp;login </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/account/register"> <i class="ion-gear-a"></i>&nbsp;register </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
+        </li>
+        <li class="nav-item" onclick="logout()">
+          <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
+      </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="home-page">
+    <div class="banner">
+      <div class="container">
+        <h1 class="logo-font">conduit</h1>
+        <p>A place to share your knowledge.</p>
+      </div>
+    </div>
+
+    <div class="container page">
+      <div class="row">
+        <div class="col-md-9" id="feed" name="feed">
+
+
+
+          <!--   
+          <ul class="pagination">
+            <li class="page-item active">
+              <a class="page-link" href="">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="">2</a>
+            </li>
+          </ul> -->
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+  <script>
+    function logout() {
+        localStorage.removeItem("token");
+        window.location.href = "/account/login";
+    }
+</script>
+</body>
+
+</html>
