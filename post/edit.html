@@ -19,15 +19,9 @@
                     <a class="nav-link active" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/account/login"> <i class="ion-compose"></i>&nbsp;login </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/account/register"> <i class="ion-gear-a"></i>&nbsp;register </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
                 </li>
-                <li class="nav-item" onclick="logout()">
+                <li class="nav-item" name="logout" id="logout">
                     <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
                 </li>
             </ul>
@@ -45,12 +39,13 @@
                     <form>
                         <fieldset>
                             <fieldset class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Article Title" name="title" id="title"/>
+                                <input type="text" class="form-control form-control-lg" placeholder="Article Title"
+                                    name="title" id="title" />
                             </fieldset>
 
                             <fieldset class="form-group">
-                                <textarea class="form-control" rows="8"
-                                    placeholder="Write your article (in markdown)" id="body" name="body"></textarea>
+                                <textarea class="form-control" rows="8" placeholder="Write your article (in markdown)"
+                                    id="body" name="body"></textarea>
                             </fieldset>
 
                             <button class="btn btn-lg pull-xs-right btn-primary" type="submit">
@@ -64,12 +59,7 @@
     </div>
 
     <script type="module" src="/src/createPost.ts"></script>
-    <script>
-        function logout() {
-            localStorage.removeItem("token");
-            window.location.href = "/account/login";
-        }
-    </script>
+    <script type="module" src="/src/logout.ts"></script>
 </body>
 
 </html>

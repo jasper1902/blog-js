@@ -28,9 +28,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
                 </li>
-                <li class="nav-item" onclick="logout()">
-                    <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -69,12 +66,6 @@
     </div>
 
     <script type="module" src="/src/register.ts"></script>
-    <script>
-        function logout() {
-            localStorage.removeItem("token");
-            window.location.href = "/account/login";
-        }
-    </script>
 </body>
 
 </html>

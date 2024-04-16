@@ -1,67 +1,66 @@
 import { formatDate } from "./utils/formatDate";
 
-const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get("id");
-const articlePage = document.querySelector(".article-page");
-const token = localStorage.getItem("token");
+const urlSearchParams = new URLSearchParams(window.location.search);
+const articleId = urlSearchParams.get("id");
+const articlePageElement = document.querySelector(".article-page");
+const userToken = localStorage.getItem("token");
 
-const getArticleById = async () => {
+const fetchArticleById = async () => {
   try {
-    const name = localStorage.getItem("name");
+    const userName = localStorage.getItem("name");
 
     const response = await fetch(
-      `https://v2.api.noroff.dev/blog/posts/${name}/${id}`
+      `https://v2.api.noroff.dev/blog/posts/${userName}/${articleId}`
     );
 
-    const result = await response.json();
+    const articleData = await response.json();
 
-    const banner = document.createElement("div");
-    banner.className = "banner";
+    const bannerElement = document.createElement("div");
+    bannerElement.className = "banner";
 
-    banner.innerHTML = `
-        <div class="banner">
+    bannerElement.innerHTML = `
+      <div class="banner">
         <div class="container">
-          <h1>${result.data.title}</h1>
+          <h1>${articleData.data.title}</h1>
           <div class="article-meta">
-           <img src="${result.data.author.avatar.url}" />
+            <img src="${articleData.data.author.avatar.url}" />
             <div class="info">
-              <p class="author">${result.data.author.name}</p>
-              <span class="date">${formatDate(result.data.created)}</span>
+              <p class="author">${articleData.data.author.name}</p>
+              <span class="date">${formatDate(articleData.data.created)}</span>
             </div>
             ${
-              token
-                ? ` <a href="/post/edit?id=${result.data.id}"><button class="btn btn-sm btn-outline-secondary" >
-                <i class="ion-edit"></i> Edit Article
-              </button></a> 
-          <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle()">
-          <i class="ion-trash-a"></i> Delete Article
-        </button>`
+              userToken
+                ? ` <a href="/post/edit?id=${articleData.data.id}"><button class="btn btn-sm btn-outline-secondary" >
+                    <i class="ion-edit"></i> Edit Article
+                  </button></a> 
+                  <button class="btn btn-sm btn-outline-danger" onclick="deleteArticle()">
+                    <i class="ion-trash-a"></i> Delete Article
+                  </button>`
                 : ""
             }
           </div>
         </div>
       </div>`;
 
-    const container = document.createElement("div");
-    container.className = "container";
-    container.className = "page";
-    container.innerHTML = `<div class="container page">
-    <div class="row article-content">
-      <div class="col-md-12">
-        <p>${result.data.body}</p>
+    const articleContainerElement = document.createElement("div");
+    articleContainerElement.className = "container page";
+    articleContainerElement.innerHTML = `
+      <div class="container page">
+        <div class="row article-content">
+          <div class="col-md-12">
+            <p>${articleData.data.body}</p>
+          </div>
+        </div>
+        <hr />
+      </div>`;
 
-      </div>
-    </div>
-    <hr />
-  </div>`;
-
-    articlePage?.appendChild(banner);
-    articlePage?.appendChild(container);
+    articlePageElement?.appendChild(bannerElement);
+    articlePageElement?.appendChild(articleContainerElement);
   } catch (error) {
     console.log(error);
   }
 };
 
-if (id) {
-  getArticleById();
+if (articleId) {
+  fetchArticleById();
 }
