@@ -6,7 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="//demo.productionready.io/main.css" />
-    <title>Vite + TS</title>
+    <title>login</title>
 </head>
 
 <body>
@@ -17,16 +17,13 @@
             <ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item">
                     <!-- Add "active" class when you're on that page" -->
-                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link active" href="/index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/account/login"> <i class="ion-compose"></i>&nbsp;login </a>
+                    <a class="nav-link" href="/account/login.html"> <i class="ion-compose"></i>&nbsp;login </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/account/register"> <i class="ion-gear-a"></i>&nbsp;register </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
+                    <a class="nav-link" href="/account/register.html"> <i class="ion-gear-a"></i>&nbsp;register </a>
                 </li>
             </ul>
         </div>
@@ -38,7 +35,7 @@
                 <div class="col-md-6 offset-md-3 col-xs-12">
                     <h1 class="text-xs-center">Sign in</h1>
                     <p class="text-xs-center">
-                        <a href="/account/register">Need an account?</a>
+                        <a href="/account/register.html">Need an account?</a>
                     </p>
 
                     <!-- <ul class="error-messages">
@@ -61,12 +58,14 @@
         </div>
     </div>
 
-    <script type="module" src="/src/login.ts"></script>\
+    <script type="module" src="/src/js/auth/login.js"></script>\
     <script>
         const userToken = localStorage.getItem("token")
-        if (userToken) {
-            window.location.href = "/";
-        }
+        addEventListener("load", () => {
+            if (userToken) {
+                window.location.href = "/index.html";
+            }
+        });
     </script>
 </body>
 

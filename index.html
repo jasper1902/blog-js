@@ -6,25 +6,27 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="//demo.productionready.io/main.css" />
-  <title>Vite + TS</title>
+  <title>My blog</title>
 </head>
 
 <body>
   <nav class="navbar navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="/">Blog</a>
+      <a class="navbar-brand" href="/index.html">Blog</a>
       <ul class="nav navbar-nav pull-xs-right" id="nav" name="nav">
         <li class="nav-item">
           <!-- Add "active" class when you're on that page" -->
-          <a class="nav-link active" href="/">Home</a>
+          <a class="nav-link active" href="/index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/account/login" id="authenticated" name="authenticated"> <i class="ion-compose"></i>&nbsp;login </a>
+          <a class="nav-link" href="/account/login.html" id="authenticated" name="authenticated"> <i
+              class="ion-compose"></i>&nbsp;login </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/account/register" id="authenticated" name="authenticated"> <i class="ion-gear-a"></i>&nbsp;register </a>
+          <a class="nav-link" href="/account/register.html" id="authenticated" name="authenticated"> <i
+              class="ion-gear-a"></i>&nbsp;register </a>
         </li>
-      
+
       </ul>
     </div>
   </nav>
@@ -40,29 +42,14 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-9" id="feed" name="feed">
-
-
-
-          <!--   
-          <ul class="pagination">
-            <li class="page-item active">
-              <a class="page-link" href="">1</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="">2</a>
-            </li>
-          </ul> -->
         </div>
-
-
       </div>
     </div>
   </div>
 
-  <script type="module" src="/src/main.ts"></script>
-  <script type="module" src="/src/logout.ts"></script>
-  <script type="module" src="/src/authentication.ts"></script>
+  <script type="module" src="./src/js/articles/articles.js"></script>
+  <script type="module" src="./src/js/auth/logout.js"></script>
+  <script type="module" src="./src/js/auth/authentication.js"></script>
 </body>
 
 </html>
-

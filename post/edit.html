@@ -6,20 +6,20 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="//demo.productionready.io/main.css" />
-    <title>Vite + TS</title>
+    <title>edit</title>
 </head>
 
 <body>
     <nav class="navbar navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="/">Blog</a>
+            <a class="navbar-brand" href="/index.html">Blog</a>
             <ul class="nav navbar-nav pull-xs-right">
                 <li class="nav-item">
                     <!-- Add "active" class when you're on that page" -->
-                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link active" href="/index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
+                    <a class="nav-link" href="/post/edit.html"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
                 </li>
                 <li class="nav-item" name="logout" id="logout">
                     <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
@@ -32,10 +32,6 @@
         <div class="container page">
             <div class="row">
                 <div class="col-md-10 offset-md-1 col-xs-12">
-                    <!-- <ul class="error-messages">
-                        <li>That title is required</li>
-                    </ul> -->
-
                     <form>
                         <fieldset>
                             <fieldset class="form-group">
@@ -47,23 +43,34 @@
                                 <textarea class="form-control" rows="8" placeholder="Write your article (in markdown)"
                                     id="body" name="body"></textarea>
                             </fieldset>
+                            <fieldset class="form-group">
+                                <div style="display: flex;">
+                                    <input type="text" class="form-control" placeholder="Enter tags" id="tag-input" />
+                                    <button class="btn btn-md pull-xs-right btn-primary" type="button" id="add-tag">
+                                        Add tag
+                                    </button>
+                                </div>
 
+                                <div class="tag-list">
+                                </div>
+                            </fieldset>
                             <button class="btn btn-lg pull-xs-right btn-primary" type="submit">
                                 Publish Article
                             </button>
                         </fieldset>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <script type="module" src="/src/createPost.ts"></script>
-    <script type="module" src="/src/logout.ts"></script>
+    <script type="module" src="/src/js/articles/editor.js"></script>
+    <script type="module" src="/src/js/auth/logout.js"></script>
     <script>
         const userToken = localStorage.getItem("token")
         if (!userToken) {
-            window.location.href = "/account/login";
+            window.location.href = "/account/login.html";
         }
     </script>
 </body>

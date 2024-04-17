@@ -1,37 +1,36 @@
-import { formatDate } from "./utils/formatDate";
+import { formatDate } from "../../utils/formatDate.js";
+import { userName } from "../../utils/defaultValue.js";
 
 const searchParams = new URLSearchParams(window.location.search);
 const articleId = searchParams.get("id");
 const articlePageElement = document.querySelector(".article-page");
 const userToken = localStorage.getItem("token");
-const userName = localStorage.getItem("name");
 
-const API_URL = "https://v2.api.noroff.dev/blog/posts"
+const API_URL = "https://v2.api.noroff.dev/blog/posts";
 
 const fetchArticleById = async () => {
   try {
-    const response = await fetch(
-      `${API_URL}/${userName}/${articleId}`
-    );
+    const response = await fetch(`${API_URL}/${userName}/${articleId}`);
 
-    const articleData = await response.json();
-
+    const articleDetail = await response.json();
     const bannerElement = document.createElement("div");
     bannerElement.className = "banner";
 
     bannerElement.innerHTML = `
       <div class="banner">
         <div class="container">
-          <h1>${articleData.data.title}</h1>
+          <h1>${articleDetail.data.title}</h1>
           <div class="article-meta">
-            <img src="${articleData.data.author.avatar.url}" />
+            <img src="${articleDetail.data.author.avatar.url}" />
             <div class="info">
-              <p class="author">${articleData.data.author.name}</p>
-              <span class="date">${formatDate(articleData.data.created)}</span>
+              <p class="author">${articleDetail.data.author.name}</p>
+              <span class="date">${formatDate(
+                articleDetail.data.created
+              )}</span>
             </div>
             ${
               userToken
-                ? ` <a href="/post/edit?id=${articleData.data.id}"><button class="btn btn-sm btn-outline-secondary" >
+                ? ` <a href="/post/edit.html?id=${articleDetail.data.id}"><button class="btn btn-sm btn-outline-secondary" >
                     <i class="ion-edit"></i> Edit Article
                   </button></a> 
                   <button class="btn btn-sm btn-outline-danger" id="deleteBtn" name="deleteBtn">
@@ -49,7 +48,13 @@ const fetchArticleById = async () => {
       <div class="container page">
         <div class="row article-content">
           <div class="col-md-12">
-            <p>${articleData.data.body}</p>
+            <p>${articleDetail.data.body}</p>
+            <ul class="tag-list">
+            ${articleDetail.data.tags.map((tag) => {
+              return `<li class="tag-default tag-pill tag-outline">${tag}</li>`;
+            })}
+          </ul>
+            
           </div>
         </div>
         <hr />
@@ -59,9 +64,7 @@ const fetchArticleById = async () => {
     articlePageElement?.appendChild(articleContainerElement);
 
     if (userToken) {
-      const deleteBtn = document.querySelector(
-        "#deleteBtn"
-      ) as HTMLButtonElement;
+      const deleteBtn = document.querySelector("#deleteBtn");
       deleteBtn.onclick = deleteArticle;
     }
   } catch (error) {
@@ -75,18 +78,15 @@ if (articleId) {
 
 const deleteArticle = async () => {
   try {
-    const response = await fetch(
-      `${API_URL}/${userName}/${articleId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userToken}`,
-        },
-      }
-    );
+    const response = await fetch(`${API_URL}/${userName}/${articleId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
     if (response.status === 204) {
-      return (window.location.href = "/");
+      return (window.location.href = "/index.html");
     }
     const result = await response.json();
     alert(result.errors[0].message);

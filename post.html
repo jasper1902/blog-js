@@ -6,28 +6,28 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="//demo.productionready.io/main.css" />
-  <title>Vite + TS</title>
+  <title>post</title>
 </head>
 
 <body>
   <nav class="navbar navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="/">Blog</a>
-      <ul class="nav navbar-nav pull-xs-right">
+      <a class="navbar-brand" href="/index.html">Blog</a>
+      <ul class="nav navbar-nav pull-xs-right" >
         <li class="nav-item">
           <!-- Add "active" class when you're on that page" -->
-          <a class="nav-link active" href="/">Home</a>
+          <a class="nav-link active" href="/index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/account/login" id="authenticated" name="authenticated"> <i
+          <a class="nav-link" href="/account/login.html" id="authenticated" name="authenticated"> <i
               class="ion-compose"></i>&nbsp;login </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/account/register" id="authenticated" name="authenticated"> <i
+          <a class="nav-link" href="/account/register.html" id="authenticated" name="authenticated"> <i
               class="ion-gear-a"></i>&nbsp;register </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
+          <a class="nav-link" href="/post/edit.html"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
         </li>
         <li class="nav-item" id="logout" name="logout">
           <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
@@ -40,9 +40,9 @@
   </div>
 
 
-  <script type="module" src="/src/article.ts"></script>
-  <script type="module" src="/src/logout.ts"></script>
-  <script type="module" src="/src/authentication.ts"></script>
+  <script type="module" src="./src/js/articles/articleDetail.js"></script>
+  <script type="module" src="./src/js/auth/logout.js"></script>
+  <script type="module" src="./src/js/auth/authentication.js"></script>
 </body>
 
 </html>
