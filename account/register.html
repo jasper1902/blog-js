@@ -66,6 +66,12 @@
     </div>
 
     <script type="module" src="/src/register.ts"></script>
+    <script>
+        const userToken = localStorage.getItem("token")
+        if (userToken) {
+            window.location.href = "/";
+        }
+    </script>
 </body>
 
 </html>

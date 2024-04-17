@@ -13,23 +13,18 @@
   <nav class="navbar navbar-light">
     <div class="container">
       <a class="navbar-brand" href="/">Blog</a>
-      <ul class="nav navbar-nav pull-xs-right">
+      <ul class="nav navbar-nav pull-xs-right" id="nav" name="nav">
         <li class="nav-item">
           <!-- Add "active" class when you're on that page" -->
           <a class="nav-link active" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/account/login"> <i class="ion-compose"></i>&nbsp;login </a>
+          <a class="nav-link" href="/account/login" id="authenticated" name="authenticated"> <i class="ion-compose"></i>&nbsp;login </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/account/register"> <i class="ion-gear-a"></i>&nbsp;register </a>
+          <a class="nav-link" href="/account/register" id="authenticated" name="authenticated"> <i class="ion-gear-a"></i>&nbsp;register </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/post/edit"> <i class="ion-gear-a"></i>&nbsp;New Article </a>
-        </li>
-        <li class="nav-item" id="logout" name="logout">
-          <a class="nav-link" href="#"> <i class="ion-gear-a"></i>&nbsp;logout </a>
-        </li>
+      
       </ul>
     </div>
   </nav>
@@ -66,6 +61,7 @@
 
   <script type="module" src="/src/main.ts"></script>
   <script type="module" src="/src/logout.ts"></script>
+  <script type="module" src="/src/authentication.ts"></script>
 </body>
 
 </html>

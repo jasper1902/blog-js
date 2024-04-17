@@ -60,6 +60,12 @@
 
     <script type="module" src="/src/createPost.ts"></script>
     <script type="module" src="/src/logout.ts"></script>
+    <script>
+        const userToken = localStorage.getItem("token")
+        if (!userToken) {
+            window.location.href = "/account/login";
+        }
+    </script>
 </body>
 
 </html>

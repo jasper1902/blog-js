@@ -61,7 +61,13 @@
         </div>
     </div>
 
-    <script type="module" src="/src/login.ts"></script>
+    <script type="module" src="/src/login.ts"></script>\
+    <script>
+        const userToken = localStorage.getItem("token")
+        if (userToken) {
+            window.location.href = "/";
+        }
+    </script>
 </body>
 
 </html>
